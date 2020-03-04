@@ -22,7 +22,7 @@
         android:id="@+id/imageView2"
         android:layout_width="@dimen/avatar_round_size"
         android:layout_height="@dimen/avatar_round_size"
-        app:layout_constraintBottom_toTopOf="@+id/tv_name_с"
+        app:layout_constraintBottom_toTopOf="@+id/tv_nick_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/ic_brightness_high_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/btn_edit"
         android:layout_width="@dimen/btn_round_size_40"
         android:layout_height="@dimen/btn_round_size_40"
         android:layout_marginStart="32dp"
@@ -49,36 +49,37 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/ic_edit_black_24dp" />
+        app:srcCompat="@drawable/ic_edit_black_24dp"
+        android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/tv_name_с"
+        android:id="@+id/tv_nick_name"
         style="@style/Profile.Header.Nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        android:text="John Doe"
         android:textColor="@android:color/white"
         android:textSize="@dimen/font_large_20"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rank"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:text="John Doe" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_rank"
         style="@style/Profile.Header.Rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Junior Android Developer"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/tv_name_с"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nick_name"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/tv_name_с"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_с" />
+        app:layout_constraintStart_toStartOf="@+id/tv_nick_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nick_name"
+        tools:text="Junior Android Developer" />
 
     <View
         android:id="@+id/view"
@@ -103,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_rating"
         style="@style/Profile.Metrics.Value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,14 +121,14 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_label_rating"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/tv_rating"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/tv_rating"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rating"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_respect"
         style="@style/Profile.Metrics.Value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,10 +145,10 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_label_respect"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/tv_respect"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/tv_respect"
+        app:layout_constraintTop_toBottomOf="@+id/tv_respect"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -171,6 +172,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView5">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_first_name"
             style="@style/Profile.EditText.Single"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -188,6 +190,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_last_name"
             style="@style/Profile.EditText.Single"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -217,17 +220,20 @@
         app:srcCompat="@drawable/ic_about" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/wr_about"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:counterEnabled="false"
+        app:counterMaxLength="128"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/view3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_about"
             style="@style/Profile.EditText.Single"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -244,7 +250,7 @@
         android:background="@color/color_divider_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/wr_about" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -263,11 +269,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@+id/ic_eye"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/view4">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_repository"
             style="@style/Profile.EditText.Single"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -275,7 +282,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/ic_eye"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
